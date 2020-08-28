@@ -20,3 +20,4 @@ def get_calories(food_name):
     result = json.loads(data)
     print(result)
     return result['foods'][0]['nf_calories']
+    # return result

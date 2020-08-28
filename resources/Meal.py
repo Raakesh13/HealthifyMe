@@ -13,7 +13,7 @@ connect('healthifyMe1')
 
 
 class Meals(Resource):
-    @jwt_required
+    @jwt_refresh_token_required
     def post(self):
         body = request.get_json(force=True)
         mealObject = M(
@@ -30,16 +30,16 @@ class Meals(Resource):
         id = str(mealObject.save().id)
         return "meal added, id:{}".format(id)
 
-    @jwt_required
+    @jwt_refresh_token_required
     def get(self):
         meals = M.objects(username=get_jwt_identity())
         if not meals:
             return "No meal object."
         else:
-            res = {}
+            res = []
             for meal in meals:
-                res[str(meal.id)] = [meal.foodname,
-                                    meal.calories, meal.description]
+                res.append([str(meal.id),meal.foodname,
+                                    meal.calories, meal.description])
             return jsonify(res)
 
 
@@ -50,11 +50,11 @@ class Meal(Resource):
         if not meal:
             return jsonify({"message":"{} does not exists".format(id)})
         else:
-            res = {}
-            res[str(meal.id)] = [meal.foodname, meal.calories, meal.description]
-            return jsonify(res)
+            # res = {}
+            # res[str(meal.id)] = [meal.foodname, meal.calories, meal.description]
+            return jsonify([meal.foodname, meal.calories, meal.description])
 
-    @jwt_required
+    @jwt_refresh_token_required
     def delete(self, id):
     #     if username != get_jwt_identity():
     #         return jsonify({"message":"Cannot update another user's meal"})
@@ -100,7 +100,7 @@ class Meal(Resource):
         return jsonify({"message":"Meal updated"})
 
 class AllMeals(Resource):
-    @jwt_required
+    @jwt_refresh_token_required
     def get(self):
         meals = M.objects()
         res = {}

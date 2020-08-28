@@ -1,12 +1,17 @@
 import React, { Component } from "react";
 import Axios from "axios";
 import Nav from "./naviagator";
-import Image from "./images/image1.jpg";
-class SignUpForm extends Component {
-  constructor() {
-    super();
+import {
+  InputGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
+  Button
+} from "reactstrap";
+import "./styles.css"
 
-    this.state = {
+class SignUpForm extends Component {
+  state = {
       email: "",
       password: "",
       username: "",
@@ -15,11 +20,7 @@ class SignUpForm extends Component {
       calorie_per_day: ""
     };
 
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
-  }
-
-  handleChange(e) {
+  handleChange = (e) => {
     let target = e.target;
     let value = target.value;
     let name = target.name;
@@ -29,7 +30,7 @@ class SignUpForm extends Component {
     });
   }
 
-  handleSubmit(e) {
+  handleSubmit = (e) => {
     e.preventDefault();
 
     Axios.post(
@@ -49,97 +50,88 @@ class SignUpForm extends Component {
 
   render() {
     return (
-      <div className="FormCenter">
-        <Nav />
-        <form onSubmit={this.handleSubmit} className="FormFields">
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="username">
-              Username
-            </label>
-            <input
+      <div className="SignIn">
+        <form  className="SignInForm"
+        onSubmit={this.handleSubmit}>
+          <InputGroup size="20%">
+          <InputGroup>
+            <Input
               type="text"
               id="username"
-              className="FormField__Input"
               placeholder="Enter username"
               name="username"
               value={this.state.username}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="first_name">
-              First Name
-            </label>
-            <input
+            </InputGroup>
+            <br />
+            <br />
+            <InputGroup>
+            <Input
               type="text"
               id="frist_name"
-              className="FormField__Input"
               placeholder="Enter your first name"
               name="first_name"
               value={this.state.first_name}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="last_name">
-              Last Name
-            </label>
-            <input
+            </InputGroup>
+            <br />
+            <br />
+            <InputGroup>
+            <Input
               type="text"
               id="last_name"
-              className="FormField__Input"
               placeholder="Enter your last name"
               name="last_name"
               value={this.state.last_name}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="password">
-              Password
-            </label>
-            <input
+            </InputGroup>
+            <br />
+            <br />
+          
+            <InputGroup>
+            <Input
               type="password"
               id="password"
-              className="FormField__Input"
               placeholder="Enter your password"
               name="password"
               value={this.state.password}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="email">
-              E-Mail Address
-            </label>
-            <input
+            </InputGroup>
+            <br />
+            <br />
+          <InputGroup>
+            <Input
               type="email"
               id="email"
-              className="FormField__Input"
               placeholder="Enter your email"
               name="email"
               value={this.state.email}
               onChange={this.handleChange}
             />
-          </div>
-          <div className="FormField">
-            <label className="FormField__Label" htmlFor="calorie_per_day">
-              Calories Per Day
-            </label>
-            <input
+            </InputGroup>
+            <br />
+            <br />
+            <InputGroup>
+            <Input
               type="number"
               id="calorie_per_day"
-              className="FormField__Input"
               placeholder="Enter Calories per day"
               name="calorie_per_day"
               value={this.state.calorie_per_day}
               onChange={this.handleChange}
             />
-          </div>
-
-          <div className="FormField">
-            <button className="FormField__Button mr-20">Sign Up</button>{" "}
-          </div>
+            </InputGroup>
+            <br />
+            <br />
+          <InputGroup>
+            <Button>Signup</Button>
+          </InputGroup>
+          
+          </InputGroup>
         </form>
       </div>
     );

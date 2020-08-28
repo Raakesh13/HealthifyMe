@@ -1,19 +1,48 @@
 .App {
-  height: 100%;
+  /* height: 100%; */
+  /* width: 100%; */
   /* margin-bottom: 1; */
-  display: flex;
-  color: white;
-  background-image: url(./images/image1.jpg);
-  background-position: center;
+  /* display: flex; */
+  /* background-image: url(./images/image1.jpg); */
+  /* background-position: center;
   background-attachment: fixed;
   background-repeat: no-repeat;
-  background-size: cover;
+  background-size: cover contain; */
+  position: relative;
 }
-
+/* .container {
+  width: 100%;
+}
+.container-1 {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+} */
+/* .signin_form {
+  display: flex;
+  height: 100%;
+  width: 100%;
+  padding: 25px 40px;
+  border: #445366;
+  color: black;
+} */
+/* .FormField__Input {
+  width: 85%;
+  background-color: transparent;
+  border: none;
+  color: black;
+  outline: none;
+  border-bottom: 1px solid #445366;
+  font-size: 1em;
+  font-weight: 300;
+  padding-bottom: 10px;
+  margin-top: 10px;
+} */
+/* 
 .App__Form {
   width: 100%;
   padding: 25px 40px;
-  /* overflow: auto; */
+  overflow: auto; 
 }
 
 .PageSwitcher {
@@ -75,10 +104,10 @@
   color: rgb(41, 40, 40);
   border-bottom: 1px solid #199087;
 }
-
-.FormField {
+*/
+/* .FormField {
   margin-bottom: 40px;
-}
+} 
 .Brand {
   color: seagreen;
   font-family: "Courier New", Courier, monospace;
@@ -86,26 +115,15 @@
   background-position-x: left;
   background-position-y: bottom;
 }
-
-.FormField__Label {
+*/
+/* .FormField__Label {
   display: block;
   text-transform: uppercase;
   font-size: 0.9em;
   color: rgb(20, 19, 19);
-}
-.FormField__Input {
-  width: 85%;
-  background-color: transparent;
-  border: none;
-  color: black;
-  outline: none;
-  border-bottom: 1px solid #445366;
-  font-size: 1em;
-  font-weight: 300;
-  padding-bottom: 10px;
-  margin-top: 10px;
-}
+} */
 
+/*
 .FormField__Input::placeholder {
   color: #616e7f;
 }
@@ -146,4 +164,4 @@
   display: inline-block;
   padding-bottom: 2px;
   margin-left: 5px;
-}
+} */

@@ -8,6 +8,7 @@ from flask_bcrypt import Bcrypt
 from datetime import datetime
 
 
+
 connect('healthifyMe1')
 
 bcrypt = Bcrypt()
@@ -41,7 +42,7 @@ class Users(Resource):
             res = []
             for user in users:
                 res.append([user.username,user.first_name+" "+
-                                    user.last_name, user.calories_per_day])
+                                    user.last_name, user.email, user.calories_per_day])
             return jsonify(res)
 
 
@@ -57,8 +58,8 @@ class User(Resource):
         #     #     print(i)
         user = {
             'username': user.username,
-            'first_name': user.first_name,
-            'last_name': user.last_name,
+            'name': user.first_name+" "+user.last_name,
+            'email':user.email,
             'calories_per_day': user.calories_per_day
         }
 
@@ -85,7 +86,8 @@ class User(Resource):
         if userObject.last_name:
             user.update(last_name=userObject.last_name)
         if userObject.password:
-            user.update(password=userObject.password)
+            user.update(password=bcrypt.generate_password_hash(
+                userObject.password).decode('UTF-8'))
         
         return jsonify({"message":"User updated"})
 
@@ -99,13 +101,16 @@ class User(Resource):
         return "Account deleted"
 
 
-parser = reqparse.RequestParser()
-parser.add_argument('username', help = 'This field cannot be blank', required = True)
-parser.add_argument('password', help = 'This field cannot be blank', required = True)
+# parser = reqparse.RequestParser()
+# parser.add_argument('username', help = 'This field cannot be blank', required = True)
+# parser.add_argument('password', help = 'This field cannot be blank', required = True)
 
 class Login(Resource):
     def post(self):
-        data = parser.parse_args()
+        # for i in parser.parse_args():
+        #     print(i)
+        data = request.get_json(force=True)
+        print(data)
         user = U.objects(username=data['username']).get()
         if not user:
             return jsonify({"message":"User does not exist"})

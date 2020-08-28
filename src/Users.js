@@ -1,13 +1,13 @@
 import React, { Component } from "react";
 import axios from "axios";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
-import Col from "react-bootstrap/Col";
-import Table from "react-bootstrap/Table";
+// import Table from "reactstrap/Table";
+import { Card, CardBody, CardText, Button, CardTitle } from "reactstrap";
+
+import "bootstrap/dist/css/bootstrap.css";
 
 class AllUsers extends Component {
-  constructor(props) {
-    super(props);
+  constructor() {
+    super();
 
     this.state = {
       users: []
@@ -18,22 +18,16 @@ class AllUsers extends Component {
       // users: res.data
       console.log(res);
       const Data = res.data.map((user, i) => (
-        // <Container fluid>
-        //   <Row>
-        //     <Col>
-        //       {user[0]} {user[1]} {user[2]}
-        //     </Col>
-        //   </Row>
-        // </Container>
-        // <Table bordered hover>
-        <tbody>
-          <tr>
-            <td>{user[0]}</td>
-            <td>{user[1]}</td>
-            <td>{user[2]}</td>
-          </tr>
-        </tbody>
-        // {/* </Table> */}
+        <Card key={i}>
+          <CardBody>
+            <CardTitle>{user[0]}</CardTitle>
+            <CardText>
+              {user[1]}
+              {user[2]}
+              {user[3]}
+            </CardText>
+          </CardBody>
+        </Card>
       ));
       this.setState({ users: Data });
     });
@@ -41,17 +35,18 @@ class AllUsers extends Component {
   render() {
     return (
       <div>
-        <Table bordered hover>
+        {/* <Table striped bordered hover variant="dark">
           <thead>
             <tr>
               <th>Username</th>
               <th>Name</th>
+              <th>Email</th>
               <th>Calories Per Day</th>
             </tr>
           </thead>
           {this.state.users}
-        </Table>
-        HEllo
+        </Table> */}
+        {this.state.users}
       </div>
     );
   }

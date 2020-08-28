@@ -1,0 +1,57 @@
+.SignIn {
+  padding: 0px;
+  margin: 0px;
+}
+
+.SignInForm {
+  position: absolute;
+  left: 85px;
+  top: 120px;
+  width: 400px;
+  margin: auto;
+  padding: 20px 20px 20px 20px;
+  border-radius: 1px;
+  /* background-color: slategray; */
+  background-image: url("image2.jpg");
+  height: 500px;
+  background-position: center;
+  background-size: cover;
+}
+
+.signin-input-group {
+  top: 170px;
+}
+
+.signin-button {
+  left: 290px;
+}
+
+.signin-button > Button {
+  background-color: teal;
+  border: none;
+}
+
+.signin-label {
+  /* margin-left: 33%; */
+  padding-top: 40px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-weight: 900;
+  font-size: xx-large;
+  text-align: center;
+  color: teal;
+}
+
+.navbar {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  /* border-radius: 10px; */
+}
+
+.nav {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+}

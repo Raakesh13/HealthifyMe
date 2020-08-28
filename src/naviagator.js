@@ -16,7 +16,7 @@ class Nav extends Component {
 
           <div className="FormTitle">
             <NavLink
-              to="/sign-in"
+              to="/signin"
               activeClassName="FormTitle__Link--Active"
               className="FormTitle__Link"
             >
@@ -25,7 +25,7 @@ class Nav extends Component {
             or{" "}
             <NavLink
               exact
-              to="/"
+              to="/signup"
               activeClassName="FormTitle__Link--Active"
               className="FormTitle__Link"
             >
